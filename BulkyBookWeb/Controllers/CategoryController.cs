@@ -23,5 +23,11 @@ namespace BulkyBookWeb.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CreateCategory(Category category)
+        {
+            return View()
+        }
     }
 }
