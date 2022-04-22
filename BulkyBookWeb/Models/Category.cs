@@ -14,6 +14,6 @@ namespace BulkyBookWeb.Models
         [Range(minimum: 1, maximum: 100, ErrorMessage = "Please enter display order from 1 to 100 only")]
         public int? DisplayOrder { get; set; }
 
-        public DateTime MyProperty { get; set; } = DateTime.Now;
+        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
     }
 }

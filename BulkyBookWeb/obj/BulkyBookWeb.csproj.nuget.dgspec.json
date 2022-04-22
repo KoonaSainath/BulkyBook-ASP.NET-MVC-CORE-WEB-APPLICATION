@@ -53,6 +53,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0-preview.3.22175.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.0, )"
             }
           },
           "imports": [

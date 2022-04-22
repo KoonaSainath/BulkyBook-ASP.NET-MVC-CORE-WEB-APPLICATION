@@ -30,12 +30,12 @@ namespace BulkyBookWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("DisplayOrder")
                         .IsRequired()
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("MyProperty")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
