@@ -27,6 +27,12 @@ namespace BulkyBookWeb.Controllers
         [HttpPost]
         public IActionResult CreateCategory(Category category)
         {
+            //Custom validation (server-side)
+            if(category.Name == category.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("Name", "Please ensure that category name is different from display order");
+                ModelState.AddModelError("DisplayOrder", "Please ensure that display order is different from category name");
+            }
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category);
