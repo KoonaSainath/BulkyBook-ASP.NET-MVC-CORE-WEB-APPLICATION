@@ -27,7 +27,9 @@ namespace BulkyBookWeb.Controllers
         [HttpPost]
         public IActionResult CreateCategory(Category category)
         {
-            return View();
+            db.Categories.Add(category);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Category");
         }
     }
 }
