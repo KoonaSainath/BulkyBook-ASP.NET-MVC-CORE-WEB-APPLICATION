@@ -1,4 +1,5 @@
-﻿using BulkyBookWeb.Data;
+﻿using BulkyBookWeb.Constants;
+using BulkyBookWeb.Data;
 using BulkyBookWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -66,7 +67,7 @@ namespace BulkyBookWeb.Controllers
         [HttpPost]
         public IActionResult EditCategory(Category category)
         {
-            if(category.Name == category.DisplayOrder.ToString())
+            if (category.Name == category.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("Name", "Category name cannot be same as display order");
                 ModelState.AddModelError("DisplayOrder", "Display order cannot be same as category name");
@@ -78,6 +79,39 @@ namespace BulkyBookWeb.Controllers
                 return RedirectToAction("Index", "Category");
             }
             return View();
+        }
+
+        [HttpGet, ActionName("DeleteCategory")]
+        public IActionResult DeleteCategoryGet(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Category category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost, ActionName("DeleteCategory")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteCategoryPost(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Category category = db.Categories.Find(id);
+            if(category == null)
+            {
+                return NotFound();
+            }
+            db.Categories.Remove(category);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Category");
         }
     }
 }
