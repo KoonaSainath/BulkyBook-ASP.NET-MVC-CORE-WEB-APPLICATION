@@ -25,6 +25,7 @@ namespace BulkyBookWeb.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateCategory(Category category)
         {
             //Custom validation (server-side)
@@ -40,6 +41,26 @@ namespace BulkyBookWeb.Controllers
                 return RedirectToAction("Index", "Category");
             }
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult EditCategory(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            Category category = db.Categories.Find(id);
+            //Category categorySingle = db.Categories.SingleOrDefault(c => c.Id == id);
+            //Category categoryFirst = db.Categories.FirstOrDefault(c => c.Id == id);
+
+            if(category == null)
+            {
+                return NotFound();
+            }
+
+            return View(category);
         }
     }
 }
