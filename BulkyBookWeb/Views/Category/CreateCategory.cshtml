@@ -19,6 +19,9 @@
             <span asp-validation-for="DisplayOrder" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary mt-2" style="width:150px">Create</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-info mt-2" style="width:150px">
+            Back to list
+        </a>
         @*<div asp-validation-summary="All" class="text-danger"></div>*@
     </div>
 </form>
