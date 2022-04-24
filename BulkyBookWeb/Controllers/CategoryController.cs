@@ -39,6 +39,8 @@ namespace BulkyBookWeb.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
+                string toastrMessage = $"Created {category.Name} category successfully";
+                TempData[ApplicationConstants.TOASTR_SUCCESS] = toastrMessage;
                 return RedirectToAction("Index", "Category");
             }
             return View();
@@ -76,6 +78,8 @@ namespace BulkyBookWeb.Controllers
             {
                 db.Categories.Update(category);
                 db.SaveChanges();
+                string toastrMessage = $"Edited {category.Name} category successfully";
+                TempData[ApplicationConstants.TOASTR_SUCCESS] = toastrMessage;
                 return RedirectToAction("Index", "Category");
             }
             return View();
@@ -111,6 +115,8 @@ namespace BulkyBookWeb.Controllers
             }
             db.Categories.Remove(category);
             db.SaveChanges();
+            string toastrMessage = $"Deleted {category.Name} category successfully";
+            TempData[ApplicationConstants.TOASTR_SUCCESS] = toastrMessage;
             return RedirectToAction("Index", "Category");
         }
     }
