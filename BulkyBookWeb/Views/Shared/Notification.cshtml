@@ -1,16 +1,16 @@
-﻿@if (TempData[ApplicationConstants.TOASTR_SUCCESS] != null)
+﻿@if (TempData[Constants.TOASTR_SUCCESS] != null)
 {
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="~/lib/jquery//dist/jquery.min.js"></script>
     <script type="text/javascript">
-        toastr.success('@TempData[ApplicationConstants.TOASTR_SUCCESS]');
+        toastr.success('@TempData[Constants.TOASTR_SUCCESS]');
     </script>
 }
-@if (TempData[ApplicationConstants.TOASTR_FAILURE] != null)
+@if (TempData[Constants.TOASTR_FAILURE] != null)
 {
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="~/lib/jquery//dist/jquery.min.js"></script>
     <script type="text/javascript">
-        toastr.error('@TempData[ApplicationConstants.TOASTR_SUCCESS]');
+        toastr.error('@TempData[Constants.TOASTR_SUCCESS]');
     </script>
 }
