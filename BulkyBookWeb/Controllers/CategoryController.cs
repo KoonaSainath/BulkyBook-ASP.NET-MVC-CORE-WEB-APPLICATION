@@ -1,4 +1,6 @@
-﻿using BulkyBook.Utilities;
+﻿using BulkyBook.DataAccessLayer.Repository;
+using BulkyBook.DataAccessLayer.Repository.IRepository;
+using BulkyBook.Utilities;
 using BulkyBookWeb.Data;
 using BulkyBookWeb.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -7,15 +9,15 @@ namespace BulkyBookWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext db;
+        private readonly IUnitOfWork unitOfWork;
 
-        public CategoryController(ApplicationDbContext db)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            this.db = db;
+            this.unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            IEnumerable<Category> categories = db.Categories;
+            IEnumerable<Category> categories = unitOfWork.CategoryRepository.GetAll();
             return View(categories);
         }
 
@@ -37,8 +39,8 @@ namespace BulkyBookWeb.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                unitOfWork.CategoryRepository.AddItem(category);
+                unitOfWork.Save();
                 string toastrMessage = $"Created {category.Name} category successfully";
                 TempData[Constants.TOASTR_SUCCESS] = toastrMessage;
                 return RedirectToAction("Index", "Category");
@@ -54,7 +56,7 @@ namespace BulkyBookWeb.Controllers
                 return NotFound();
             }
 
-            Category category = db.Categories.Find(id);
+            Category category = unitOfWork.CategoryRepository.GetItemByExpression(c => c.Id == id);
             //Category categorySingle = db.Categories.SingleOrDefault(c => c.Id == id);
             //Category categoryFirst = db.Categories.FirstOrDefault(c => c.Id == id);
 
@@ -76,8 +78,8 @@ namespace BulkyBookWeb.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Categories.Update(category);
-                db.SaveChanges();
+                unitOfWork.CategoryRepository.UpdateCategory(category);
+                unitOfWork.Save();
                 string toastrMessage = $"Edited {category.Name} category successfully";
                 TempData[Constants.TOASTR_SUCCESS] = toastrMessage;
                 return RedirectToAction("Index", "Category");
@@ -92,7 +94,7 @@ namespace BulkyBookWeb.Controllers
             {
                 return NotFound();
             }
-            Category category = db.Categories.Find(id);
+            Category category = unitOfWork.CategoryRepository.GetItemByExpression(c => c.Id == id);
             if (category == null)
             {
                 return NotFound();
@@ -108,13 +110,13 @@ namespace BulkyBookWeb.Controllers
             {
                 return NotFound();
             }
-            Category category = db.Categories.Find(id);
+            Category category = unitOfWork.CategoryRepository.GetItemByExpression(c => c.Id == id);
             if(category == null)
             {
                 return NotFound();
             }
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            unitOfWork.CategoryRepository.RemoveItem(category);
+            unitOfWork.Save();
             string toastrMessage = $"Deleted {category.Name} category successfully";
             TempData[Constants.TOASTR_SUCCESS] = toastrMessage;
             return RedirectToAction("Index", "Category");
