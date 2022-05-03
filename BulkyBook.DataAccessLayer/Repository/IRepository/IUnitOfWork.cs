@@ -1,5 +1,4 @@
-﻿using BulkyBookWeb.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BulkyBook.DataAccessLayer.Repository.IRepository
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface IUnitOfWork
     {
-        void UpdateCategory(Category category);
-
+        CategoryRepository CategoryRepository { get; }
+        void Save();
     }
 }

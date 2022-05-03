@@ -1,6 +1,5 @@
 ﻿using BulkyBook.DataAccessLayer.Repository.IRepository;
 using BulkyBookWeb.Data;
-using BulkyBookWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +8,20 @@ using System.Threading.Tasks;
 
 namespace BulkyBook.DataAccessLayer.Repository
 {
-    public class CategoryRepository : Repository<Category>, ICategoryRepository
+    public class UnitOfWork : IUnitOfWork
     {
+        public CategoryRepository CategoryRepository { get; private set; }
+
         private readonly ApplicationDbContext db;
-        public CategoryRepository(ApplicationDbContext db) : base(db)
+        public UnitOfWork(ApplicationDbContext db)
         {
             this.db = db;
+            CategoryRepository = new CategoryRepository(db);
         }
 
-        public void UpdateCategory(Category category)
+        public void Save()
         {
-            db.Categories.Update(category);
+            db.SaveChanges();
         }
     }
 }
