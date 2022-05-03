@@ -18,6 +18,7 @@ namespace BulkyBook.DataAccessLayer.Repository
         {
             this.db = db;
             CategoryRepository = new CategoryRepository(db);
+            CoverTypeRepository = new CoverTypeRepository(db);
         }
 
         public void Save()
