@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace BulkyBook.DataAccessLayer.Repository
 {
-    public class CoverTypeRepository : ICoverTypeRepository
+    public class CoverTypeRepository : Repository<CoverType>, ICoverTypeRepository
     {
         private readonly ApplicationDbContext db;
-        public CoverTypeRepository(ApplicationDbContext db)
+        public CoverTypeRepository(ApplicationDbContext db) : base(db)
         {
             this.db = db;
         }
