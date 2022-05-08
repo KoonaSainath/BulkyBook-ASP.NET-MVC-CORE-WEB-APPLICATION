@@ -1,0 +1,28 @@
+﻿@model CoverType
+
+@{
+    ViewData["Title"] = "Edit cover type";
+}
+
+<div class="mt-4 p-3">
+    <div class="row mb-2">
+        <h2>Edit cover type</h2>
+        <form method="post">
+            <div class="mb-2">
+                <label asp-for="@Model.Name"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+            <a class="btn btn-info" asp-action="Index" asp-controller="CoverType">Back to list</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
+
+
