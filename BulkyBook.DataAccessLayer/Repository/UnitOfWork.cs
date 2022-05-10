@@ -12,6 +12,7 @@ namespace BulkyBook.DataAccessLayer.Repository
     {
         public CategoryRepository CategoryRepository { get; private set; }
         public CoverTypeRepository CoverTypeRepository { get; private set; }
+        public ProductRepository ProductRepository { get; private set; }
 
         private readonly ApplicationDbContext db;
         public UnitOfWork(ApplicationDbContext db)
@@ -19,6 +20,7 @@ namespace BulkyBook.DataAccessLayer.Repository
             this.db = db;
             CategoryRepository = new CategoryRepository(db);
             CoverTypeRepository = new CoverTypeRepository(db);
+            ProductRepository = new ProductRepository(db);
         }
 
         public void Save()

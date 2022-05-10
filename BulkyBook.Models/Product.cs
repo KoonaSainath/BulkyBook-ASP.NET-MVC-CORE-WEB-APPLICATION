@@ -37,10 +37,12 @@ namespace BulkyBook.Models
         public double Price100 { get; set; }
         public string ImageUrl { get; set; }
         [Required]
+        [Display(Name = "Category")]
         public int CategoryId  { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
         [Required]
+        [Display(Name = "Cover type")]
         public int CoverTypeId { get; set; }
         [ForeignKey("CoverTypeId")]
         public CoverType CoverType { get; set; }

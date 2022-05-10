@@ -50,6 +50,20 @@
                 <input type="number" asp-for="@Model.Price100" class="form-control" />
                 <span asp-validation-for="@Model.Price100" class="text-danger"></span>
             </div>
+            <div class="mb-2">
+                <label asp-for="@Model.CategoryId"></label>
+                <select asp-for="@Model.CategoryId" asp-items="@ViewBag.Categories" class="form-control">
+                    <option disabled selected>Select a category</option>
+                </select>
+                <span asp-validation-for="@Model.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.CoverTypeId"></label>
+                <select asp-for="@Model.CoverTypeId" asp-items="@(IEnumerable<SelectListItem>) @ViewData["CoverTypes"]" class="form-control">
+                    <option disabled selected>Select a cover type</option>
+                </select>
+                <span asp-validation-for="@Model.CoverTypeId" class="text-danger"></span>
+            </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
