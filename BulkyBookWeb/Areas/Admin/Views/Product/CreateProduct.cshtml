@@ -1,0 +1,62 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+<div class="mt-4 p-3 container">
+    <div class="row mb-2">
+        <h2>Create a product</h2>
+    </div>
+    <form method="post">
+        <div class="mb-2">
+            <div class="mb-2">
+                <label asp-for="@Model.Title"></label>
+                <input asp-for="@Model.Title" class="form-control" />
+                <span class="text-danger" asp-validation-for="@Model.Title"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.Description"></label>
+                <textarea asp-for="@Model.Description" class="form-control" cols=3></textarea>
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.ISBN"></label>
+                <input asp-for="@Model.ISBN" class="form-control" />
+                <span asp-validation-for="@Model.ISBN" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.Author"></label>
+                <input asp-for="@Model.Author" class="form-control" />
+                <span asp-validation-for="@Model.Author" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.ListPrice"></label>
+                <input type="number" asp-for="@Model.ListPrice" class="form-control" />
+                <span asp-validation-for="@Model.ListPrice" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.Price"></label>
+                <input type="number" asp-for="@Model.Price" class="form-control" />
+                <span asp-validation-for="@Model.Price" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.Price50"></label>
+                <input type="number" asp-for="@Model.Price50" class="form-control" />
+                <span asp-validation-for="@Model.Price50" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.Price100"></label>
+                <input type="number" asp-for="@Model.Price100" class="form-control" />
+                <span asp-validation-for="@Model.Price100" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

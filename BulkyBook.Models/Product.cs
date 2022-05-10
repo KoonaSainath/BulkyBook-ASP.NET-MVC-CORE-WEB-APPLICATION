@@ -22,15 +22,18 @@ namespace BulkyBook.Models
         public string Author { get; set; }
         [Required]
         [Range(1,10000)]
+        [Display(Name = "List price")]
         public double ListPrice { get; set; }
         [Required]
         [Range(1,10000)]
         public double Price { get; set; }
         [Required]
         [Range(1,10000)]
+        [Display(Name = "Price if number of books ordered crosses 50")]
         public double Price50 { get; set; }
         [Required]
         [Range(1,10000)]
+        [Display(Name = "Price if number of books ordered crosses 100")]
         public double Price100 { get; set; }
         public string ImageUrl { get; set; }
         [Required]

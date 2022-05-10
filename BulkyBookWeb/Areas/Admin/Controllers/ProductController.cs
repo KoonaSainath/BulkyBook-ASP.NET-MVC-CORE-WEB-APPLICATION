@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BulkyBook.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
@@ -6,6 +7,20 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult CreateProduct()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateProduct(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
             return View();
         }
     }
