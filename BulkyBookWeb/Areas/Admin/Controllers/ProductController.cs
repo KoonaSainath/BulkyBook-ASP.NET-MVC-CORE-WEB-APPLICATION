@@ -43,7 +43,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             return View(productVm);
         }
         [HttpPost]
-        public IActionResult UpsertProduct(ProductVM productVm)
+        public IActionResult UpsertProduct(ProductVM productVm, IFormFile file)
         {
             if (ModelState.IsValid)
             {
