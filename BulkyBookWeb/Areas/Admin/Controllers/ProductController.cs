@@ -19,7 +19,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreateProduct()
+        public IActionResult UpsertProduct()
         {
             ProductVM productVm = new ProductVM();
             IEnumerable<SelectListItem> categoriesSelectListItems = unitOfWork.CategoryRepository.GetAll().Select(c => new SelectListItem()
@@ -42,7 +42,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             return View(productVm);
         }
         [HttpPost]
-        public IActionResult CreateProduct(ProductVM productVm)
+        public IActionResult UpsertProduct(ProductVM productVm)
         {
             if (ModelState.IsValid)
             {
