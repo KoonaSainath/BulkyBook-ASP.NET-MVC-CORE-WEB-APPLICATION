@@ -22,6 +22,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         public IActionResult UpsertProduct()
         {
             ProductVM productVm = new ProductVM();
+            productVm.Product = new Product();
             IEnumerable<SelectListItem> categoriesSelectListItems = unitOfWork.CategoryRepository.GetAll().Select(c => new SelectListItem()
             {
                 Text = c.Name,
