@@ -35,6 +35,7 @@ namespace BulkyBook.Models
         [Range(1,10000)]
         [Display(Name = "Price if number of books ordered crosses 100")]
         public double Price100 { get; set; }
+        [Display(Name = "Upload image")]
         public string ImageUrl { get; set; }
         [Required]
         [Display(Name = "Category")]
