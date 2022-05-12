@@ -71,5 +71,13 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             }
             return View();
         }
+
+        #region API Endpoints
+        public IActionResult GetAllProducts()
+        {
+            IEnumerable<Product> products = unitOfWork.ProductRepository.GetAll();
+            return Json(new { data = products });
+        }
+        #endregion
     }
 }
