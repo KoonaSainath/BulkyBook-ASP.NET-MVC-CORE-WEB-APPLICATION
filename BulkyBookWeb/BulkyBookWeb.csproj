@@ -27,4 +27,8 @@
     <Folder Include="wwwroot\Images\Products\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\LoadProductTable.js" />
+  </ItemGroup>
+
 </Project>
