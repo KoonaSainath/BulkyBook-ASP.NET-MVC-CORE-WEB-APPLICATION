@@ -23,8 +23,4 @@
     <ProjectReference Include="..\BulkyBook.Utilities\BulkyBook.Utilities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
