@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using BulkyBookWeb.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace BulkyBook.Models
 {
@@ -35,15 +36,19 @@ namespace BulkyBook.Models
         [Range(1,10000)]
         [Display(Name = "Price if number of books ordered crosses 100")]
         public double Price100 { get; set; }
+        [ValidateNever]
+        [Display(Name = "Upload image")]
         public string ImageUrl { get; set; }
         [Required]
         [Display(Name = "Category")]
         public int CategoryId  { get; set; }
+        [ValidateNever]
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
         [Required]
         [Display(Name = "Cover type")]
         public int CoverTypeId { get; set; }
+        [ValidateNever]
         [ForeignKey("CoverTypeId")]
         public CoverType CoverType { get; set; }
 

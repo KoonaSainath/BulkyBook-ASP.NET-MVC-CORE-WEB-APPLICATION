@@ -9,7 +9,7 @@ namespace BulkyBook.DataAccessLayer.Repository.IRepository
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string includeTheseNavigationProperties = null);
         void AddItem(T item);
         T GetItemByExpression(Expression<Func<T, bool>> filter);
         void RemoveItem(T item);
