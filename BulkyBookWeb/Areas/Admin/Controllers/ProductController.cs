@@ -75,7 +75,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         #region API Endpoints
         public IActionResult GetAllProducts()
         {
-            IEnumerable<Product> products = unitOfWork.ProductRepository.GetAll();
+            IEnumerable<Product> products = unitOfWork.ProductRepository.GetAll("Category,CoverType");
             return Json(new { data = products });
         }
         #endregion

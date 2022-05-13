@@ -12,7 +12,9 @@ function loadProductTable() {
         "columns": [
             { "data": "title" },
             { "data": "isbn" },
-            { "data": "price" }
+            { "data": "price" },
+            { "data": "category.name" },
+            { "data": "coverType.name" }
         ]
     })
 }

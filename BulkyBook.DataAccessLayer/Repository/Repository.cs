@@ -24,9 +24,18 @@ namespace BulkyBook.DataAccessLayer.Repository
             dbSet.Add(item);
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string includeTheseNavigationProperties = null)
         {
-            return dbSet;
+            IQueryable<T> query = dbSet.AsQueryable<T>();
+            if(includeTheseNavigationProperties != null)
+            {
+                //"Category,CoverType"
+                foreach (string navigationProperty in includeTheseNavigationProperties.Split(",",StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(navigationProperty);
+                }
+            }
+            return query;
         }
 
         public T GetItemByExpression(Expression<Func<T, bool>> filter)
