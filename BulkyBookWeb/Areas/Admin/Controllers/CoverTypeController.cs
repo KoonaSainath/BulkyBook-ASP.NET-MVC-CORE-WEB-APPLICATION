@@ -1,5 +1,6 @@
 ﻿using BulkyBook.DataAccessLayer.Repository.IRepository;
 using BulkyBook.Models;
+using BulkyBook.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -29,6 +30,7 @@ namespace BulkyBookWeb.Controllers
             {
                 unitOfWork.CoverTypeRepository.AddItem(coverType);
                 unitOfWork.Save();
+                TempData[Constants.TOASTR_SUCCESS] = "Cover type created";
                 return RedirectToAction("Index", "CoverType");
             }
             return View();
@@ -54,6 +56,7 @@ namespace BulkyBookWeb.Controllers
             {
                 unitOfWork.CoverTypeRepository.UpdateCoverType(coverType);
                 unitOfWork.Save();
+                TempData[Constants.TOASTR_SUCCESS] = "Cover type updated";
                 return RedirectToAction("Index", "CoverType");
             }
             return View();
@@ -77,6 +80,7 @@ namespace BulkyBookWeb.Controllers
         {
             unitOfWork.CoverTypeRepository.RemoveItem(coverType);
             unitOfWork.Save();
+            TempData[Constants.TOASTR_SUCCESS] = "Cover type deleted";
             return RedirectToAction("Index", "CoverType");
         }
     }

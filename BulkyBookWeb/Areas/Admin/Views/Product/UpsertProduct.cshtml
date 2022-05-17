@@ -9,6 +9,8 @@
         <h2>@(Model.Product.Id!=0 ? "Update" : "Create") a product</h2>
     </div>
     <form method="post" enctype="multipart/form-data">
+        <input asp-for="@Model.Product.Id" hidden />
+        <input asp-for="@Model.Product.ImageUrl" hidden />
         <div class="mb-2 row">
             <div class="mb-2">
                 <label asp-for="@Model.Product.Title"></label>
@@ -52,8 +54,14 @@
             </div>
             <div class="mb-2 col-12">
                 <label asp-for="@Model.Product.ImageUrl"></label>
-                <input type="file" id="imageToUpload" name="file" asp-for="@Model.Product.ImageUrl" class="form-control" />
+                <input type="file" id="imageToUpload" name="file" class="form-control" />
             </div>
+            @if (Model.Product.ImageUrl != null)
+            {
+                <div class="mb-2 col-12">
+                    <img src="@Model.Product.ImageUrl" width="120" height="120" />
+                </div>
+            }
             <div class="mb-2 col-6">
                 <label asp-for="@Model.Product.CategoryId"></label>
                 <select asp-for="@Model.Product.CategoryId" asp-items="@Model.CategorySelectListItems" class="form-control">
@@ -87,11 +95,12 @@
     @{
     <partial name="_ValidationScriptsPartial"></partial>
     }
+}
 
 <script>
     function ValidateImageUpload(){
         if(document.getElementById("imageToUpload").value == ""){
-            swal({
+            Swal.fire({
                 title: "Image alert",
                 text: "Please upload an image",
                 icon: "error",
@@ -101,4 +110,3 @@
         return true;
     }
 </script>
-}
