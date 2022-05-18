@@ -1,8 +1,26 @@
-﻿@{
+﻿@model IEnumerable<Product>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>BULKY BOOK</p>
+<div class="container mt-4">
+    <div class="row p-3">
+        @foreach (Product product in Model)
+        {
+            <div class="col-3 p-3">
+                <div class="card">
+                    <img src="@product.ImageUrl" alt="product image" class="card-img-top" height="200" />
+                    <div class="bg-dark ps-2 pt-1">
+                        <p class="text-info"><b>@product.Title</b></p>
+                        <p class="text-white">by @product.Author</p>
+                        <p class="text-warning">List price: <strike><b>@product.ListPrice.ToString("c")</b></strike></p>
+                        <p class="text-warning">As low as: <b>@product.Price100.ToString("c")</b></p>
+                    </div>
+                    <a class="btn btn-danger text-white" asp-area="Customer" asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">Details</a>
+                </div>
+            </div>
+
+        }
+    </div>
 </div>
+

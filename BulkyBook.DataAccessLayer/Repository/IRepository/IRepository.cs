@@ -11,7 +11,7 @@ namespace BulkyBook.DataAccessLayer.Repository.IRepository
     {
         IEnumerable<T> GetAll(string includeTheseNavigationProperties = null);
         void AddItem(T item);
-        T GetItemByExpression(Expression<Func<T, bool>> filter);
+        T GetItemByExpression(Expression<Func<T, bool>> filter, string includeTheseNavigationProperties = null);
         void RemoveItem(T item);
         void RemoveItemsInRange(IEnumerable<T> items);
     }

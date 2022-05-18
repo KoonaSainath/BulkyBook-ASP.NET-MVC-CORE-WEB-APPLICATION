@@ -1,0 +1,37 @@
+﻿@model ShoppingCart
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card bg-dark">
+        <div class="ps-2">
+            <table class="table">
+                <tr>
+                    <td>
+                        <h1 class="text-warning">@Model.Product.Title</h1>
+                        <h2 class="text-warning">by @Model.Product.Author</h2>
+                        <h3 class="text-info">Category: @Model.Product.Category.Name</h3>
+                        <h3 class="text-info">Cover type: @Model.Product.CoverType.Name</h3>
+                        <p class="text-white"><b>List price: <strike>@Model.Product.ListPrice.ToString("c")</strike></b></p>
+                        <p class="text-white"><b>Price: @Model.Product.Price.ToString("c")</b></p>
+                        <p class="text-white"><b>Price for 50 to 100 books: @Model.Product.Price50.ToString("c")</b></p>
+                        <p class="text-white"><b>Price for more than 100 books: @Model.Product.Price100.ToString("c")</b></p>
+                        <div class="mb-2">
+                            <label asp-for="@Model.Count" class="text-info"></label>
+                            <input asp-for="@Model.Count" type="number" class="form-control" />
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Add to cart</button>
+                            <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-info">Back to home</a>
+                        </div>
+                    </td>
+                    <td>
+                        <img src="@Model.Product.ImageUrl" height="500" width="500" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
